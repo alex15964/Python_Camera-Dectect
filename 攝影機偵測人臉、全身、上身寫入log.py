@@ -25,7 +25,7 @@ def camera_on(cap):
         ret, frame = cap.read() #從攝影機擷取一張影像，ret代表成功與否，frame是攝影機的單張畫面
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)  #抓到的影像轉為灰階
 
-        '''face_detect = faceCascade.detectMultiScale(   #檢測出圖片中所有的人臉，並將人臉用向量保存各個人臉的座標、大小（用矩形表示）
+        face_detect = faceCascade.detectMultiScale(   #檢測出圖片中所有的人臉，並將人臉用向量保存各個人臉的座標、大小（用矩形表示）
             gray,
             scaleFactor=1.1,    #scaleFactor是指定在圖像大小依每個圖像比例縮小的程度
             minNeighbors=5, #minNeighbors是指定每個候選矩形必須保留多少個鄰居的參數。此參數將影響檢測到的人臉質量，較高的值會導致檢測數量較少但質量較高。
@@ -40,7 +40,7 @@ def camera_on(cap):
                 face_img_counter += 1
         
         for (x, y, w, h) in face_detect:  #將辨識到的人臉畫框
-            cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)'''
+            cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
         fullbody_detect = fullbodyCascade.detectMultiScale(   #檢測出圖片中所有的全身，並將全身用向量保存各個人臉的座標、大小（用矩形表示）
             gray,
@@ -58,7 +58,7 @@ def camera_on(cap):
         for (x, y, w, h) in fullbody_detect:  #將辨識到的全身畫框
             cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 255, 0), 2)
 
-        '''upperbody_detect = upperbodCascade.detectMultiScale(   #檢測出圖片中所有的上身，並將上身用向量保存各個人臉的座標、大小（用矩形表示）
+        upperbody_detect = upperbodCascade.detectMultiScale(   #檢測出圖片中所有的上身，並將上身用向量保存各個人臉的座標、大小（用矩形表示）
             gray,
             scaleFactor=1.1,    #scaleFactor是指定在圖像大小依每個圖像比例縮小的程度
             minNeighbors=2 #minNeighbors是指定每個候選矩形必須保留多少個鄰居的參數。此參數將影響檢測到的人臉質量，較高的值會導致檢測數量較少但質量較高。
@@ -72,7 +72,7 @@ def camera_on(cap):
                 upperbode_img_counter += 1
 
         for (x, y, w, h) in upperbody_detect:  #將辨識到的上身畫框
-            cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 255), 2)'''
+            cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 255), 2)
                 
         cv2.imshow('frame', frame)  #顯示圖片
 
